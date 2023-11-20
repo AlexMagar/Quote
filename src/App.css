@@ -5,6 +5,17 @@
   text-align: center;
 }
 
+html,body{
+  background-image: linear-gradient(to right, #4727a8 0%, rgba(0, 0, 0, 0.414) 100%);
+}
+
+.message{
+  font-size: 75px;
+  background: -webkit-linear-gradient(#93edf9, #c64cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
