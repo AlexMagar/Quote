@@ -1,16 +1,16 @@
 import './App.css'
-import FetchData from './component/FetchData'
+import FetchData from './component/FetchData/FetchData'
 
 function App() {
 
   //fetch api
 
   const content = (
-    <>
-    <h1 className='message'>Message</h1>
+    <div style={{maxWidth: '40rem'}}>
+    <h1 className='text-message'>Message</h1>
     <hr />
     <FetchData />
-    </>
+    </div>
   )
 
   return content
