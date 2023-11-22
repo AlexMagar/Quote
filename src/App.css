@@ -9,6 +9,11 @@ html,body{
   background-image: linear-gradient(to right, #4727a8 0%, rgba(0, 0, 0, 0.414) 100%);
 }
 
+.content{
+  max-width: 40rem;
+  margin-top: -10vh;
+}
+
 .text-message{
   font-size: 75px;
   background: -webkit-linear-gradient(#93edf9, #c64cff);
@@ -21,3 +26,4 @@ html,body{
   font-style: italic;
   color: #fff;
 }
+
