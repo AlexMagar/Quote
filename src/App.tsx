@@ -7,7 +7,7 @@ function App() {
 
   const content = (
     <div style={{maxWidth: '40rem'}}>
-    <h1 className='text-message'>Message</h1>
+    <h1 className='text-message'>Life Advice</h1>
     <hr />
     <FetchData />
     </div>
