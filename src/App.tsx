@@ -6,7 +6,7 @@ function App() {
   //fetch api
 
   const content = (
-    <div style={{maxWidth: '40rem'}}>
+    <div className='content'>
     <h1 className='text-message'>Life Advice</h1>
     <hr />
     <FetchData />
