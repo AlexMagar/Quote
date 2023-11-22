@@ -19,6 +19,9 @@ const FetchData = () => {
     //fetch data from API
     const fetchHandler = async () => {
         const abortController = new AbortController()
+
+        // increase the performance by cancling the previous request and putting into the loading stage, so that it is not constantly sending the request one after another
+        // if the new request is made while another one is still going, it will cancle the previous request and focus on new request
         const signal = abortController.signal
 
         setLoading(true)
@@ -57,7 +60,7 @@ const FetchData = () => {
                     <p>Error: (error.message)</p>
                 ) : (
                     <div>
-                        <p className="main-message">"{slip}"</p>
+                        <p className="main-message" >"{slip}"</p>
                         <button
                             onClick={fetchHandler}
                             title={'Refresh the advice'}
