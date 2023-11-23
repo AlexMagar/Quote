@@ -1,3 +1,4 @@
+import { useState } from "react"
 
 export type TQuoteArr = {
     _id?: string,
@@ -5,7 +6,13 @@ export type TQuoteArr = {
     contents?: string,
 }
 
-export const Quotes = ({_id, author, contents}: TQuoteArr) => {
+export const Quotes = () => {
+
+    const [Quotes, setQuote] = useState<TQuoteArr | null>(null)
+    const [data, setData] = useState<boolean>(false)
+    const [error, setError] = useState<string | null>(null)
+
+    const msg = "data"
 
     const fetchHandler = async () => {
         const abortController = new AbortController()
@@ -19,11 +26,7 @@ export const Quotes = ({_id, author, contents}: TQuoteArr) => {
             return response.json()
         })
         .then((result) =>{
-            {
-                result.map((item) => (
-                    console.log(item.content)
-                ))
-            }
+            setData(result)
         })
         .catch((err) => {
             console.log(err.message)
@@ -35,7 +38,7 @@ export const Quotes = ({_id, author, contents}: TQuoteArr) => {
 
   const content = (
     <>
-        <p>Quotes</p>
+        <p>{msg}</p>
         <button onClick={fetchHandler}>Fetch Data</button>
     </>
   )  
