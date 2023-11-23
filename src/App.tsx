@@ -1,5 +1,6 @@
 import './App.css'
 import FetchData from './component/FetchData/FetchData'
+import { Quotes } from './component/Quotes/Quotes'
 
 function App() {
 
@@ -8,6 +9,8 @@ function App() {
     <h1 className='text-message'>Life Advice</h1>
     <hr />
     <FetchData />
+    <hr/>
+    <Quotes/>
     </div>
   )
 
