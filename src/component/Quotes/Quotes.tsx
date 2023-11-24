@@ -6,12 +6,13 @@ export type TQuoteArr = {
     content: string,
 }
 
-
 export const Quotes = () => {
 
     const [quote, setQuote] = useState<TQuoteArr | null>(null)
     const [author, setAuthor] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
+
+    const data = quote?.content
 
     const fetchHandler = async () => {
         const abortController = new AbortController()
@@ -27,10 +28,10 @@ export const Quotes = () => {
         .then((result) =>{
             console.log(result)
             {
-                result.map((item) => {
+                result.map((item: any) => {
                     setQuote(item.content)
                     setAuthor(item.author)
-                    setError(false)
+                    setError(null)
                 })
             }
         })
@@ -48,9 +49,17 @@ export const Quotes = () => {
 
   const content = (
     <>
-        <p>{quote}</p>
-        <p>{author}</p>
-        <button onClick={fetchHandler}>Get Quote</button>
+        {
+            error ? (
+                <p>Error: (error.message)</p>
+            ): (
+                <div>
+                    <p className="quote">{data}</p>
+                    <p className="author">- {author}</p>
+                    <button onClick={fetchHandler}>Get Quote</button>
+                </div>
+            )
+        }
     </>
   )  
 
