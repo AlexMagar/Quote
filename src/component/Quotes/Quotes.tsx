@@ -1,18 +1,17 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export type TQuoteArr = {
     _id?: string,
-    author?: string,
-    contents?: string,
+    author: string,
+    content: string,
 }
+
 
 export const Quotes = () => {
 
-    const [Quotes, setQuote] = useState<TQuoteArr | null>(null)
-    const [data, setData] = useState<boolean>(false)
+    const [quote, setQuote] = useState<TQuoteArr | null>(null)
+    const [author, setAuthor] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
-
-    const msg = "data"
 
     const fetchHandler = async () => {
         const abortController = new AbortController()
@@ -26,20 +25,32 @@ export const Quotes = () => {
             return response.json()
         })
         .then((result) =>{
-            setData(result)
+            console.log(result)
+            {
+                result.map((item) => {
+                    setQuote(item.content)
+                    setAuthor(item.author)
+                    setError(false)
+                })
+            }
         })
         .catch((err) => {
-            console.log(err.message)
+            setError(err.message)
+            setQuote(null)
+            setAuthor(false)
         })
-
         return () => abortController.abort()
     }
 
+    useEffect(() => {
+        fetchHandler()
+    }, [])
 
   const content = (
     <>
-        <p>{msg}</p>
-        <button onClick={fetchHandler}>Fetch Data</button>
+        <p>{quote}</p>
+        <p>{author}</p>
+        <button onClick={fetchHandler}>Get Quote</button>
     </>
   )  
 
