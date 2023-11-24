@@ -1,5 +1,6 @@
 import './App.css'
 import FetchData from './component/FetchData/FetchData'
+import { Quotes } from './component/Quotes/Quotes'
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <hr />
     <FetchData />
     <hr/>
+    <Quotes/>
     </div>
   )
 
