@@ -46,7 +46,6 @@ const FetchData = () => {
         })
         return () => abortController.abort()
     }
-    console.log(slip)
     useEffect(() => {
         fetchHandler()
     }, [])
