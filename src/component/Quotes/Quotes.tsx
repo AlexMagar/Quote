@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 
-export type TQuoteArr = {
-    _id?: string,
+export type TQuoteArr = [{
     author: string,
     content: string,
-}
+}]
 
 export const Quotes = () => {
 
@@ -12,7 +11,7 @@ export const Quotes = () => {
     const [author, setAuthor] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
 
-    const data = quote?.content
+    const data = quote?.[0]?.content
 
     const fetchHandler = async () => {
         const abortController = new AbortController()
@@ -42,7 +41,7 @@ export const Quotes = () => {
         })
         return () => abortController.abort()
     }
-
+    console.log("hello data:",data)
     useEffect(() => {
         fetchHandler()
     }, [])
