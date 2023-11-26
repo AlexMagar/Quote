@@ -37,6 +37,7 @@ const FetchData = () => {
         .then((advice) => {
             setLoading(false)
             setError(null)
+            console.log("Fetch Data: ", advice)
             setData(advice)
         }) 
         .catch((error) => {
