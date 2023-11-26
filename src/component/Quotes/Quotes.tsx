@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import dotenv from "dotenv"
 
 export type TQuoteArr = [{
     author: string,
@@ -17,7 +18,7 @@ export const Quotes = () => {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        await fetch("https://api.quotable.io/quotes/random", {signal})
+        await fetch(process.env, {signal})
         .then((response) => {
             if(!response.ok){
                 throw new Error(`This is an Error ${response.status}`)
@@ -53,7 +54,7 @@ export const Quotes = () => {
                 <p>Error: (error.message)</p>
             ): (
                 <div>
-                    <p className="quote">{data}</p>
+                    <p className="quote">{quote}</p>
                     <p className="author">- {author}</p>
                     <button onClick={fetchHandler}>Get Quote</button>
                 </div>
